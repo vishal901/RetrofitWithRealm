@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.vishal.retrofitwithrealm.DatabaseData.regpojo;
+import com.example.vishal.retrofitwithrealm.Extra.AllStaticMethod;
+import com.example.vishal.retrofitwithrealm.Extra.AppConfing;
 import com.example.vishal.retrofitwithrealm.Extra.MyApplication;
 import com.example.vishal.retrofitwithrealm.InterfaceData.InterfaceApi;
 import com.example.vishal.retrofitwithrealm.R;
@@ -107,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (response.isSuccessful()) {
 
-                }if (response.code() == 200) {
+                }
+                if (response.code() == 200) {
                     MyApplication.getInstance().showLog("200", "" + response.code());
                     SetData(response);
                 } else if (response.code() == 201) {
@@ -145,15 +148,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         RealmResults<regpojo> results = realm.where(regpojo.class).findAll();
 
-        MyApplication.getInstance().showLog("size",""+results.size());
+        MyApplication.getInstance().showLog("size", "" + results.size());
+
+
+        AllStaticMethod.SavePref(this, AppConfing.Level1, "vishal");
+        AllStaticMethod.SavePref(this, AppConfing.Level2, "rakshit");
+        AllStaticMethod.SavePref(this, AppConfing.Level3, "dashrath");
+        AllStaticMethod.SavePref(this, AppConfing.Level4, "harsh");
+
+
+        String a = AllStaticMethod.LoadPref(this, AppConfing.Level1);
+        String b = AllStaticMethod.LoadPref(this, AppConfing.Level2);
+        String c = AllStaticMethod.LoadPref(this, AppConfing.Level3);
+        String d = AllStaticMethod.LoadPref(this, AppConfing.Level4);
+
+        MyApplication.getInstance().showLog("data",a +"\n"+b +"\n"+c +"\n"+d);
+
+
         //  }
 
 
     }
 
     private void SaveIntoDatabase(Response<RegData> response) {
-
-
 
 
     }
