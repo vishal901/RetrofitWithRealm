@@ -38,30 +38,34 @@ public class PreferenceHelper {
         prefs.edit().clear().apply();
     }
 
-    public void addValue(String apikey) {
 
-        prefs.edit().putString("apikey", apikey).commit();
-    }
-
-    public String GetApikey() {
-
-        String apikey = prefs.getString("apikey", "");
-
-        return apikey;
-    }
 
     // key static levi
-    public  void SavePref(Activity cntx, String key, String value) {
+    public  void SavePref(Context cntx, String key, String value) {
 
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(key, value);
         editor.commit();
+
+        //used this
+
+//        AllStaticMethod.SavePref(this, AppConfing.Level1, "vishal");
+//        AllStaticMethod.SavePref(this, AppConfing.Level2, "rakshit");
+//        AllStaticMethod.SavePref(this, AppConfing.Level3, "dashrath");
+//        AllStaticMethod.SavePref(this, AppConfing.Level4, "harsh");
     }
 
     //key satatic vari levi set karaveli
     public  String LoadPref(Context cntx, String key) {
 
         return prefs.getString(key, null);
+
+        //used this
+
+//        String a = AllStaticMethod.LoadPref(this, AppConfing.Level1);
+//        String b = AllStaticMethod.LoadPref(this, AppConfing.Level2);
+//        String c = AllStaticMethod.LoadPref(this, AppConfing.Level3);
+//        String d = AllStaticMethod.LoadPref(this, AppConfing.Level4);
     }
 
 }
